@@ -214,7 +214,7 @@ function Hero() {
         start: "top top",
         end: "bottom top",
         scrub: 1,
-        onUpdate: (self) => {
+        onUpdate: (self : any) => {
           const progress = self.progress
           gsap.set(titleRef.current, {
             y: -150 * progress,
@@ -828,7 +828,7 @@ function App() {
 
     lenis.on("scroll", ScrollTrigger.update)
 
-    gsap.ticker.add((time) => {
+    gsap.ticker.add((time : any) => {
       lenis.raf(time * 1000)
     })
 
@@ -836,7 +836,7 @@ function App() {
 
     return () => {
       lenis.destroy()
-      gsap.ticker.remove((time) => {
+      gsap.ticker.remove((time : any) => {
         lenis.raf(time * 1000)
       })
     }
