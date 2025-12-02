@@ -262,7 +262,7 @@ function Hero() {
         >
           <span className="text-primary">Vince Edward C. Mañacap</span>
           <br />
-          <span className="italic text-gray-400 text-xl sm:text-3xl md:text-5xl lg:text-6xl inline-flex flex-wrap justify-center items-baseline gap-x-2 sm:gap-x-3 ml-20 sm:ml-0 md:ml-20">
+          <span className="italic text-gray-400 text-xl sm:text-3xl md:text-5xl lg:text-6xl inline-flex flex-wrap justify-center items-baseline gap-x-2 sm:gap-x-3">
             <span>bringing ideas to</span>
             <span className="inline-block min-w-20 sm:min-w-[120px] md:min-w-[180px] lg:min-w-[220px] text-left overflow-hidden">
               <span ref={rotatingWordRef} className="text-primary inline-block">
