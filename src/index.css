@@ -82,20 +82,23 @@ html.lenis body {
   }
 }
 
-/* Animated gradient keyframes */
+/* Enhanced animated gradient with more visible colors and smoother animation */
 @keyframes gradient-shift {
-  0%,
-  100% {
+  0% {
     background-position: 0% 50%;
   }
   50% {
     background-position: 100% 50%;
   }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.animate-gradient-shift {
-  background-size: 200% 200%;
-  animation: gradient-shift 8s ease infinite;
+.animated-gradient {
+  background: linear-gradient(-45deg, #000000, #0e4d5c, #000000, #1a1a2e, #000000, #0d3d4a);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
 }
 
 @theme inline {

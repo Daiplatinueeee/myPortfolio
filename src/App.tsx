@@ -1,3 +1,5 @@
+"use client"
+
 import type React from "react"
 import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
@@ -33,6 +35,7 @@ const projects = [
       "A web platform that allows users to book home services in three easy steps. Features include GIS-based service location, AI integration, coupons, reCaptcha security, and other advanced functionalities to simplify service booking.",
     image: pj3,
     tags: ["React JS", "MongoDB", "Express.js", "Node.js", "TailwindCSS"],
+    link: "https://github.com/Daiplatinueeee/OHSv2",
   },
   {
     id: 2,
@@ -42,6 +45,7 @@ const projects = [
       "A web platform that allows residents to register online with their barangay securely and efficiently. Features include user-friendly forms, data validation, and a backend system to manage submissions.",
     image: pj4,
     tags: ["HTML", "CSS", "Javascript", "PHP"],
+    link: "https://github.com/Daiplatinueeee/Online-Baranggay",
   },
   {
     id: 3,
@@ -51,6 +55,7 @@ const projects = [
       "A software application for managing hospital operations, including patient checkup appointments, doctor schedules, and health records. Users can also view hospital news and updates with interactive hover features.",
     image: pj1,
     tags: ["Java", "MySQL"],
+    link: "https://github.com/Daiplatinueeee/Hospital_Management_System",
   },
   {
     id: 4,
@@ -60,6 +65,7 @@ const projects = [
       "A web application for managing college IT department attendance using RFID cards. Features include classroom-based attendance tracking, scheduling, announcements, and ongoing school events.",
     image: pj2,
     tags: ["React JS", "MySQL", "TailwindCSS"],
+    link: "https://github.com/Daiplatinueeee/Attendance_System",
   },
 ]
 
@@ -244,7 +250,7 @@ function Hero() {
       ref={heroRef}
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black"
     >
-      <div className="absolute inset-0 bg-linear-to-br from-cyan-500/10 via-black to-purple-500/10 animate-gradient-shift" />
+      <div className="absolute inset-0 animated-gradient" />
 
       <div className="relative z-10 text-center px-4 sm:px-6 w-full max-w-7xl mx-auto">
         <p className="text-gray-400 text-xs sm:text-sm md:text-base uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-4">
@@ -256,7 +262,7 @@ function Hero() {
         >
           <span className="text-primary">Vince Edward C. Mañacap</span>
           <br />
-          <span className="italic text-gray-400 text-xl sm:text-3xl md:text-5xl lg:text-6xl inline-flex flex-wrap justify-center items-baseline gap-x-2 sm:gap-x-3 ml-20 sm:ml-20 md:ml-20">
+          <span className="italic text-gray-400 text-xl sm:text-3xl md:text-5xl lg:text-6xl inline-flex flex-wrap justify-center items-baseline gap-x-2 sm:gap-x-3 ml-20 sm:ml-0 md:ml-20">
             <span>bringing ideas to</span>
             <span className="inline-block min-w-20 sm:min-w-[120px] md:min-w-[180px] lg:min-w-[220px] text-left overflow-hidden">
               <span ref={rotatingWordRef} className="text-primary inline-block">
@@ -384,10 +390,10 @@ function About() {
             <img
               src={myPic || "/placeholder.svg"}
               alt="Developer portrait"
-              className="w-full max-w-[500px] mt-40 h-auto md:h-[600px] object-cover mx-auto rounded-lg"
+              className="w-full max-w-[500px] h-auto md:h-[600px] object-cover mx-auto mt-30 rounded-lg"
             />
           </div>
-          <div className="absolute -bottom-10 -left-1 w-24 sm:w-32 h-24 sm:h-32 bg-primary/20 rounded-lg -z-10" />
+          <div className="absolute -bottom-6 -left-2 w-24 sm:w-32 h-24 sm:h-32 bg-primary/20 rounded-lg -z-10" />
         </div>
       </div>
     </section>
@@ -480,12 +486,15 @@ function Projects() {
 
         <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
           {projects.map((project, index) => (
-            <div
+            <a
               key={project.id}
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
               ref={(el) => {
-                projectRefs.current[index] = el
+                projectRefs.current[index] = el as unknown as HTMLDivElement
               }}
-              className="group cursor-pointer"
+              className="group cursor-pointer block"
             >
               <div className="relative overflow-hidden rounded-lg aspect-4/3">
                 <img
@@ -514,7 +523,7 @@ function Projects() {
                   ))}
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
