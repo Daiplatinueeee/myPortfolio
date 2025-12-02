@@ -29,7 +29,8 @@ const projects = [
     id: 1,
     title: "Online Home Services Platform",
     category: "Full Stack",
-    description: "A web platform that allows users to book home services in three easy steps. Features include GIS-based service location, AI integration, coupons, reCaptcha security, and other advanced functionalities to simplify service booking.",
+    description:
+      "A web platform that allows users to book home services in three easy steps. Features include GIS-based service location, AI integration, coupons, reCaptcha security, and other advanced functionalities to simplify service booking.",
     image: pj3,
     tags: ["React JS", "MongoDB", "Express.js", "Node.js", "TailwindCSS"],
   },
@@ -37,7 +38,8 @@ const projects = [
     id: 2,
     title: "Baranggay Online Registration Form",
     category: "Web Development",
-    description: "A web platform that allows residents to register online with their barangay securely and efficiently. Features include user-friendly forms, data validation, and a backend system to manage submissions.",
+    description:
+      "A web platform that allows residents to register online with their barangay securely and efficiently. Features include user-friendly forms, data validation, and a backend system to manage submissions.",
     image: pj4,
     tags: ["HTML", "CSS", "Javascript", "PHP"],
   },
@@ -45,7 +47,8 @@ const projects = [
     id: 3,
     title: "Hospital Management System",
     category: "Software Development",
-    description: "A software application for managing hospital operations, including patient checkup appointments, doctor schedules, and health records. Users can also view hospital news and updates with interactive hover features.",
+    description:
+      "A software application for managing hospital operations, including patient checkup appointments, doctor schedules, and health records. Users can also view hospital news and updates with interactive hover features.",
     image: pj1,
     tags: ["Java", "MySQL"],
   },
@@ -53,7 +56,8 @@ const projects = [
     id: 4,
     title: "Attendance Management System",
     category: "Web Development",
-    description: "A web application for managing college IT department attendance using RFID cards. Features include classroom-based attendance tracking, scheduling, announcements, and ongoing school events.",
+    description:
+      "A web application for managing college IT department attendance using RFID cards. Features include classroom-based attendance tracking, scheduling, announcements, and ongoing school events.",
     image: pj2,
     tags: ["React JS", "MySQL", "TailwindCSS"],
   },
@@ -133,20 +137,20 @@ function Navigation() {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        scrolled ? "bg-background/80 backdrop-blur-md py-4" : "py-6",
+        scrolled ? "bg-black/80 backdrop-blur-md py-4" : "py-6",
       )}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="text-foreground font-serif text-xl font-medium tracking-tight">
+      <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between">
+        <a href="#" className="text-white font-serif text-lg sm:text-xl font-medium tracking-tight">
           myPortfolio
         </a>
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-4 lg:gap-8">
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
               onClick={(e) => handleClick(e, item.href)}
-              className="text-muted-foreground hover:text-foreground transition-colors text-sm uppercase tracking-widest"
+              className="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-widest"
             >
               {item.name}
             </a>
@@ -214,7 +218,7 @@ function Hero() {
         start: "top top",
         end: "bottom top",
         scrub: 1,
-        onUpdate: (self : any) => {
+        onUpdate: (self: any) => {
           const progress = self.progress
           gsap.set(titleRef.current, {
             y: -150 * progress,
@@ -226,7 +230,6 @@ function Hero() {
           })
         },
         onLeaveBack: () => {
-          // Reset to visible state when scrolling back to top
           gsap.to(titleRef.current, { y: 0, opacity: 1, duration: 0.3 })
           gsap.to(subtitleRef.current, { y: 0, opacity: 1, duration: 0.3 })
         },
@@ -237,35 +240,45 @@ function Hero() {
   }, [])
 
   return (
-    <section ref={heroRef} className="relative min-h-screen flex flex-col items-center justify-center overflow-y-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-secondary/20 via-background to-background" />
+    <section
+      ref={heroRef}
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black"
+    >
+      <div className="absolute inset-0 bg-linear-to-br from-cyan-500/10 via-black to-purple-500/10 animate-gradient-shift" />
 
-      <div className="relative z-10 text-center px-6">
-        <p className="text-muted-foreground text-sm md:text-base uppercase tracking-[0.3em] mt-[-60px] mb-4">Hello, I'm</p>
+      <div className="relative z-10 text-center px-4 sm:px-6 w-full max-w-7xl mx-auto">
+        <p className="text-gray-400 text-xs sm:text-sm md:text-base uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-4">
+          Hello, I'm
+        </p>
         <h1
           ref={titleRef}
-          className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium text-foreground leading-tight text-balance"
+          className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-medium text-primary leading-tight text-balance"
         >
           <span className="text-primary">Vince Edward C. Mañacap</span>
           <br />
-          <span className="italic text-muted-foreground text-3xl md:text-5xl lg:text-6xl">
-            bringing ideas to
-            <span ref={rotatingWordRef} className="text-primary inline-block ml-3">
-              {rotatingWords[currentWordIndex]}
+          <span className="italic text-gray-400 text-xl sm:text-3xl md:text-5xl lg:text-6xl inline-flex flex-wrap justify-center items-baseline gap-x-2 sm:gap-x-3 ml-20 sm:ml-20 md:ml-20">
+            <span>bringing ideas to</span>
+            <span className="inline-block min-w-20 sm:min-w-[120px] md:min-w-[180px] lg:min-w-[220px] text-left overflow-hidden">
+              <span ref={rotatingWordRef} className="text-primary inline-block">
+                {rotatingWords[currentWordIndex]}
+              </span>
             </span>
           </span>
         </h1>
-        <p ref={subtitleRef} className="mt-6 text-muted-foreground text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
+        <p
+          ref={subtitleRef}
+          className="mt-4 sm:mt-6 text-gray-400 text-base sm:text-lg md:text-xl max-w-xl mx-auto leading-relaxed px-4"
+        >
           A creative developer passionate about building polished software and web experiences with attention to detail.
         </p>
       </div>
 
       <div
         ref={scrollIndicatorRef}
-        className="absolute bottom-30 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-16 sm:bottom-24 md:bottom-30 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-muted-foreground text-xs uppercase tracking-widest">Scroll</span>
-        <ArrowDownIcon className="w-4 h-4 text-muted-foreground animate-bounce" />
+        <span className="text-gray-400 text-xs uppercase tracking-widest">Scroll</span>
+        <ArrowDownIcon className="w-4 h-4 text-gray-400 animate-bounce" />
       </div>
     </section>
   )
@@ -331,44 +344,50 @@ function About() {
   }, [])
 
   return (
-    <section id="about" ref={sectionRef} className="min-h-screen py-32 px-6 flex items-center">
-      <div className="container mx-auto grid md:grid-cols-2 gap-16 items-center ml-20">
+    <section
+      id="about"
+      ref={sectionRef}
+      className="min-h-screen py-16 sm:py-24 md:py-32 px-4 sm:px-6 flex items-center bg-black"
+    >
+      <div className="container mx-auto grid md:grid-cols-2 gap-8 md:gap-16 items-center">
         <div ref={contentRef}>
           <span className="text-primary text-sm uppercase tracking-widest">About Me</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-medium mt-4 text-foreground leading-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium mt-4 text-white leading-tight">
             Creating polished <br />
             <span className="italic text-primary">digital solutions</span>
           </h2>
-          <p className="mt-6 text-muted-foreground leading-relaxed text-lg">
-            I’m a Web & Application Developer passionate about creating accessible, pixel-perfect user interfaces that combine thoughtful design with solid development.
+          <p className="mt-4 sm:mt-6 text-gray-400 leading-relaxed text-base sm:text-lg">
+            I'm a Web & Application Developer passionate about creating accessible, pixel-perfect user interfaces that
+            combine thoughtful design with solid development.
           </p>
-          <p className="mt-4 text-muted-foreground leading-relaxed text-lg">
-            My passion lies where design meets development, creating experiences that are both visually stunning and highly functional.
+          <p className="mt-4 text-gray-400 leading-relaxed text-base sm:text-lg">
+            My passion lies where design meets development, creating experiences that are both visually stunning and
+            highly functional.
           </p>
-          <div className="mt-8 flex gap-8">
+          <div className="mt-6 sm:mt-8 grid grid-cols-3 gap-4 sm:gap-8">
             <div>
-              <span className="text-3xl font-serif text-foreground">Intern</span>
-              <p className="text-muted-foreground text-sm mt-1">Learning Experience</p>
+              <span className="text-xl sm:text-2xl md:text-3xl font-serif text-white">Intern</span>
+              <p className="text-gray-400 text-xs sm:text-sm mt-1">Learning Experience</p>
             </div>
             <div>
-              <span className="text-3xl font-serif text-foreground">15+</span>
-              <p className="text-muted-foreground text-sm mt-1">Projects Completed</p>
+              <span className="text-xl sm:text-2xl md:text-3xl font-serif text-white">15+</span>
+              <p className="text-gray-400 text-xs sm:text-sm mt-1">Projects Completed</p>
             </div>
             <div>
-              <span className="text-3xl font-serif text-foreground">17+</span>
-              <p className="text-muted-foreground text-sm mt-1">Programming Languages Used</p>
+              <span className="text-xl sm:text-2xl md:text-3xl font-serif text-white">17+</span>
+              <p className="text-gray-400 text-xs sm:text-sm mt-1">Languages Used</p>
             </div>
           </div>
         </div>
         <div ref={imageRef} className="relative">
           <div className="aspect-4/5 rounded-lg overflow-hidden">
             <img
-              src={myPic}
+              src={myPic || "/placeholder.svg"}
               alt="Developer portrait"
-              className="w-[500px] h-[600px] object-cover mt-50"
+              className="w-full max-w-[500px] mt-40 h-auto md:h-[600px] object-cover mx-auto rounded-lg"
             />
           </div>
-          <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/20 rounded-lg -z-10" />
+          <div className="absolute -bottom-10 -left-1 w-24 sm:w-32 h-24 sm:h-32 bg-primary/20 rounded-lg -z-10" />
         </div>
       </div>
     </section>
@@ -439,14 +458,14 @@ function Projects() {
   }, [])
 
   return (
-    <section id="projects" ref={sectionRef} className="py-32 px-6 bg-card">
+    <section id="projects" ref={sectionRef} className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-zinc-950">
       <div className="container mx-auto">
-        <div ref={headerRef} className="text-center mb-20">
+        <div ref={headerRef} className="text-center mb-12 sm:mb-20">
           <span className="text-primary text-sm uppercase tracking-widest">Selected Work</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-medium mt-4 text-foreground">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium mt-4 text-white">
             Featured <span className="italic text-primary">Projects</span>
           </h2>
-          <p className="mt-5 text-muted-foreground">
+          <p className="mt-5 text-gray-400 px-4">
             Visit my GitHub for a full overview of all my projects:{" "}
             <a
               href="https://github.com/Daiplatinueeee"
@@ -459,7 +478,7 @@ function Projects() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
           {projects.map((project, index) => (
             <div
               key={project.id}
@@ -474,22 +493,22 @@ function Projects() {
                   alt={project.title}
                   className="project-image w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                  <div className="flex items-center gap-2 text-foreground">
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <div className="flex items-center gap-2 text-white">
                     <span className="text-sm uppercase tracking-widest">View Project</span>
                     <ArrowUpRightIcon className="w-4 h-4" />
                   </div>
                 </div>
               </div>
-              <div className="mt-6">
-                <span className="text-muted-foreground text-sm">{project.category}</span>
-                <h3 className="font-serif text-2xl font-medium mt-1 text-foreground group-hover:text-primary transition-colors">
+              <div className="mt-4 sm:mt-6">
+                <span className="text-gray-400 text-sm">{project.category}</span>
+                <h3 className="font-serif text-xl sm:text-2xl font-medium mt-1 text-white group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground mt-2">{project.description}</p>
+                <p className="text-gray-400 mt-2 text-sm sm:text-base">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mt-4">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 text-xs rounded-full bg-secondary text-secondary-foreground">
+                    <span key={tag} className="px-3 py-1 text-xs rounded-full bg-zinc-800 text-gray-300">
                       {tag}
                     </span>
                   ))}
@@ -575,18 +594,18 @@ function Skills() {
   }, [])
 
   return (
-    <section id="skills" ref={sectionRef} className="py-32 px-6">
+    <section id="skills" ref={sectionRef} className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-black">
       <div className="container mx-auto">
-        <div ref={headerRef} className="text-center mb-20">
+        <div ref={headerRef} className="text-center mb-12 sm:mb-20">
           <span className="text-primary text-sm uppercase tracking-widest">Expertise</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-medium mt-4 text-foreground">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium mt-4 text-white">
             Skills & <span className="italic text-primary">Technologies</span>
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-16">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
           <div>
-            <h3 className="text-xl font-medium text-foreground mb-8">Core Competencies</h3>
+            <h3 className="text-lg sm:text-xl font-medium text-white mb-6 sm:mb-8">Core Competencies</h3>
             <div className="space-y-6">
               {skills.map((skill, index) => (
                 <div
@@ -596,10 +615,10 @@ function Skills() {
                   }}
                 >
                   <div className="flex justify-between mb-2">
-                    <span className="text-foreground">{skill.name}</span>
-                    <span className="text-muted-foreground">{skill.level}%</span>
+                    <span className="text-white">{skill.name}</span>
+                    <span className="text-gray-400">{skill.level}%</span>
                   </div>
-                  <div className="h-1 bg-secondary rounded-full overflow-hidden">
+                  <div className="h-1 bg-zinc-800 rounded-full overflow-hidden">
                     <div className="skill-fill h-full bg-primary rounded-full" style={{ width: 0 }} />
                   </div>
                 </div>
@@ -608,12 +627,12 @@ function Skills() {
           </div>
 
           <div>
-            <h3 className="text-xl font-medium text-foreground mb-8">Technologies I Work With</h3>
-            <div ref={techRef} className="flex flex-wrap gap-3">
+            <h3 className="text-lg sm:text-xl font-medium text-white mb-6 sm:mb-8">Technologies I Work With</h3>
+            <div ref={techRef} className="flex flex-wrap gap-2 sm:gap-3">
               {technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="tech-item px-4 py-2 rounded-full border border-border text-muted-foreground hover:text-foreground hover:border-primary transition-colors"
+                  className="tech-item px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-zinc-700 text-gray-400 hover:text-white hover:border-primary transition-colors text-sm"
                 >
                   {tech}
                 </span>
@@ -698,22 +717,23 @@ function Contact() {
   }
 
   return (
-    <section id="contact" ref={sectionRef} className="py-32 px-6 bg-card">
+    <section id="contact" ref={sectionRef} className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-zinc-950">
       <div className="container mx-auto">
-        <div ref={headerRef} className="text-center mb-20">
+        <div ref={headerRef} className="text-center mb-12 sm:mb-20">
           <span className="text-primary text-sm uppercase tracking-widest">Get In Touch</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-medium mt-4 text-foreground">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium mt-4 text-white">
             Open for <span className="italic text-primary">Opportunities</span>
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-lg mx-auto">
-            If you’re looking for a web & application developer, I’d be happy to chat about how I can help with your projects.
+          <p className="text-gray-400 mt-4 max-w-lg mx-auto px-4">
+            If you're looking for a web & application developer, I'd be happy to chat about how I can help with your
+            projects.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-16 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 max-w-5xl mx-auto">
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="name" className="text-sm text-muted-foreground mb-2 block">
+              <label htmlFor="name" className="text-sm text-gray-400 mb-2 block">
                 Name
               </label>
               <input
@@ -721,11 +741,11 @@ function Contact() {
                 value={formState.name}
                 onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                 placeholder="Your name"
-                className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-700 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
             <div>
-              <label htmlFor="email" className="text-sm text-muted-foreground mb-2 block">
+              <label htmlFor="email" className="text-sm text-gray-400 mb-2 block">
                 Email
               </label>
               <input
@@ -734,11 +754,11 @@ function Contact() {
                 value={formState.email}
                 onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                 placeholder="your@email.com"
-                className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-700 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
             <div>
-              <label htmlFor="message" className="text-sm text-muted-foreground mb-2 block">
+              <label htmlFor="message" className="text-sm text-gray-400 mb-2 block">
                 Message
               </label>
               <textarea
@@ -747,12 +767,12 @@ function Contact() {
                 onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                 placeholder="Tell me about your project..."
                 rows={5}
-                className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-700 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary resize-none"
               />
             </div>
             <button
               type="submit"
-              className="w-full px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
+              className="w-full px-6 py-3 rounded-lg bg-primary text-black font-medium hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
             >
               Send Message
               <ArrowUpRightIcon className="w-4 h-4" />
@@ -761,30 +781,31 @@ function Contact() {
 
           <div ref={infoRef} className="flex flex-col justify-between">
             <div>
-              <h3 className="text-xl font-medium text-foreground mb-4">Contact Information</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                I’m currently looking for full-time opportunities. Feel free to email me if you’d like to discuss potential roles or collaborations.
+              <h3 className="text-lg sm:text-xl font-medium text-white mb-4">Contact Information</h3>
+              <p className="text-gray-400 leading-relaxed">
+                I'm currently looking for full-time opportunities. Feel free to email me if you'd like to discuss
+                potential roles or collaborations.
               </p>
-              <div className="mt-8 space-y-4">
+              <div className="mt-6 sm:mt-8 space-y-4">
                 <div>
-                  <span className="text-muted-foreground text-sm">Email</span>
-                  <p className="text-foreground">vinceedward480@gmail.com</p>
+                  <span className="text-gray-400 text-sm">Email</span>
+                  <p className="text-white">vinceedward480@gmail.com</p>
                 </div>
                 <div>
-                  <span className="text-muted-foreground text-sm">Location</span>
-                  <p className="text-foreground">Minglanilla, Cebu</p>
+                  <span className="text-gray-400 text-sm">Location</span>
+                  <p className="text-white">Minglanilla, Cebu</p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-12">
-              <span className="text-muted-foreground text-sm">Follow Me</span>
+            <div className="mt-8 sm:mt-12">
+              <span className="text-gray-400 text-sm">Follow Me</span>
               <div className="flex gap-4 mt-4">
                 {socialLinks.map((link) => (
                   <a
                     key={link.name}
                     href={link.href}
-                    className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary transition-colors"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-zinc-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-primary transition-colors"
                     aria-label={link.name}
                   >
                     {link.Icon()}
@@ -795,8 +816,8 @@ function Contact() {
           </div>
         </div>
 
-        <div className="mt-32 text-center">
-          <p className="text-muted-foreground text-sm">© 2025. Crafted with passion.</p>
+        <div className="mt-24 sm:mt-32 text-center">
+          <p className="text-gray-400 text-sm">© 2025. Crafted with passion.</p>
         </div>
       </div>
     </section>
@@ -828,7 +849,7 @@ function App() {
 
     lenis.on("scroll", ScrollTrigger.update)
 
-    gsap.ticker.add((time : any) => {
+    gsap.ticker.add((time: any) => {
       lenis.raf(time * 1000)
     })
 
@@ -836,14 +857,14 @@ function App() {
 
     return () => {
       lenis.destroy()
-      gsap.ticker.remove((time : any) => {
+      gsap.ticker.remove((time: any) => {
         lenis.raf(time * 1000)
       })
     }
   }, [])
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-background">
+    <div ref={containerRef} className="min-h-screen bg-black overflow-x-hidden">
       <Navigation />
       <main>
         <Hero />
